@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BID Registration | UNHCR–CODEC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --primary: #0072bc;    /* UNHCR Blue */
+    --secondary: #00ff99;  /* Neon Green (Focus/Success) */
+    --warning: #ffcc00;    /* Amber (Alerts) */
+    --danger: #ff4d4d;     /* Red (Errors) */
+    --bg-dark: #001f3f;    /* Deep Navy Background */
+    --text: #ffffff;       /* Pure White Text */
+    --glass: rgba(255, 255, 255, 0.12); /* Frosted Glass */
+}
+/* 1. REPLACE BODY & ADD BACKGROUND OVERLAYS */
+/* 1. Ensure ALL text in the body is white */
+        body {
+            margin: 0; 
+            font-family: 'Poppins', sans-serif; 
+            background: #001f3f; 
+            color: #ffffff !important; /* Force all text to white */
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+        }
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #001f3f, #004080); z-index: -2;
+        }
+
+        .bg-slider-container {
+            position: fixed; top: 50%; left: 0; transform: translateY(-50%);
+            width: 100%; height: 7.5in; z-index: -1; overflow: hidden; opacity: 0.5;
+        }
+
+        .sliding-track {
+            display: flex; width: 1000vw; animation: moveLeftToRight 80s linear infinite;
+        }
+
+        .sliding-track img { width: 100vw; height: 7.5in; object-fit: cover; }
+        @keyframes moveLeftToRight {
+            0% { transform: translateX(-500vw); }
+            100% { transform: translateX(0); }
+        }
+
+        /* 2. UPDATED HEADER FOR LOGOS */
+        .header { text-align: center; padding: 20px; z-index: 1; }
+        .header h2 { 
+            display: flex; align-items: center; justify-content: center; 
+            gap: 15px; margin: 0; letter-spacing: 1px; 
+        }
+        .header img { height: 50px; vertical-align: middle; }
+        .header p { opacity: 0.7; font-size: 0.9em; margin-top: 5px; }
+
+        /* 3. ENHANCED GLASS CONTAINER */
+        .container {
+            width: 90%; max-width: 1000px; background: var(--glass); backdrop-filter: blur(15px);
+            border-radius: 20px; padding: 35px; border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; z-index: 2; /* Sits above background */
+        }
+
+/* 4. Section Title Colors */
+        .section-title {
+            grid-column: 1 / -1; 
+            border-bottom: 1px solid var(--secondary);
+            padding-bottom: 5px; 
+            margin-top: 15px; 
+            color: #FFFFFF; /* Section titles now white */
+            text-transform: capitalize; 
+            font-size: 0.9em; 
+            font-weight: 800; /* Extra bold for sections */
+        }
+        .field { display: flex; flex-direction: column; }
+/* 2. Bold Label Text */
+        label { 
+            font-size: 0.85em; 
+            margin-bottom: 6px; 
+            color: #00FFFF; /* Label text white */
+            font-weight: 700; /* BOLD label */
+            text-transform: capitalize; /* Optional: adds a pro tech look */
+            letter-spacing: 0.5px;
+        }
+        input, select {
+            padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.4); color: white; font-size: 0.9em;
+        }
+        input:focus { border-color: var(--secondary); outline: none; }
+
+        /* Multifunctional Button */
+        .actions { grid-column: 1 / -1; margin-top: 30px; }
+/* 1. Normal State: White background, Deep Navy Blue text */
+/* 1. The Container for the button */
+.actions { 
+    grid-column: 1 / -1; 
+    margin-top: 30px; 
+    display: flex;         /* Use flexbox to align */
+    justify-content: center; /* Centering the small button */
+}
+
+/* 2. The Small Submit Button */
+.btn-submit {
+    width: auto;              /* Only as wide as the text + padding */
+    min-width: 200px;         /* Ensures it's not TOO tiny */
+    padding: 12px 30px;       /* Reduced height (12px) and decent width (30px) */
+    border: none; 
+    border-radius: 8px;       /* Slightly smaller corners */
+    font-weight: 700;
+    background: #ffffff;      /* White background */
+    color: #001f3f;           /* Deep Navy text */
+    cursor: pointer; 
+    text-transform: capitalize; /* Only first letters capital */
+    font-size: 0.95em;        /* Slightly smaller text */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-submit:hover {
+    background: #0072bc;      /* UNHCR Blue on hover */
+    color: #ffffff;           /* White text on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 114, 188, 0.4);
+}
+        /* Professional Modal */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+        }
+        .modal-content {
+            background: #002b56; margin: 8% auto; padding: 30px; border: 1px solid var(--secondary);
+            width: 90%; max-width: 650px; border-radius: 20px; text-align: center;
+            box-shadow: 0 0 40px rgba(0, 255, 153, 0.15);
+        }
+
+        .dup-table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 0.85em; }
+        .dup-table th { background: rgba(0, 255, 153, 0.1); color: var(--secondary); padding: 12px; text-align: left; }
+        .dup-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
+        .match-tag { color: var(--warning); font-weight: 600; }
+
+        .loading-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; 
+            color: var(--secondary); font-weight: 600; font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+    <div class="bg-slider-container">
+        <div class="sliding-track">
+            <img src="photos/img1.jpg"><img src="photos/img2.jpg"><img src="photos/img3.jpg">
+            <img src="photos/img4.jpg"><img src="photos/img5.jpg"><img src="photos/img6.jpg">
+            <img src="photos/img7.jpg"><img src="photos/img8.jpg"><img src="photos/img9.jpg">
+            <img src="photos/img10.jpg">
+        </div>
+    </div>
+
+<audio id="sndTech" src="sounds/tech_click.mp3" preload="auto"></audio>
+<audio id="sndType" src="sounds/typing.mp3" preload="auto"></audio>
+<audio id="sndSuccess" src="sounds/success.mp3" preload="auto"></audio>
+<audio id="sndWarning" src="sounds/warning.mp3" preload="auto"></audio>
+<audio id="sndIntro" src="sounds/system_start.mp3" preload="auto"></audio>
+    <div class="header">
+        <h2>
+            <img src="logos/unhcr.png" alt="UNHCR">
+            UNHCR–CODEC BID SYSTEM
+            <img src="logos/codec.png" alt="CODEC">
+        </h2>
+        <p>EPRC Case Management Unit | 2025</p>
+    </div>
+<form id="bidForm" class="container">
+    <div class="field">
+        <label>Auto BID ID</label>
+        <input type="text" id="autoBidId" name="bidId" readonly style="background: rgba(0, 255, 153, 0.1); color: var(--secondary); font-weight: 600; border: 1px solid var(--secondary);">
+    </div>
+    <div class="field">
+        <label>CMO Name</label>
+        <select id="cmo" name="cmo" required>
+            <option value="">--Select Name--</option>
+            <option>Md. Abu Sayeid</option><option>Rajia Sultana</option><option>Sayed Monsur Hezazi</option>
+            <option>Beauty Akter</option><option>Sampad Sen</option><option>Jinnat Mohol Fency</option>
+            <option>Md. Shahidul Islam</option><option>Sadekur Rahaman</option><option>Umrasung Marma</option>
+            <option>Jannatul Ferdoushi</option><option>Sumon Kumar Nath</option><option>Safayet Hossen</option>
+            <option>Ishrat Jahan Meem</option><option>Rashedul Kabir</option><option>Hafiza Khatun</option>
+            <option>Rupayan Barua</option><option>Golam Mostafa</option><option>Roni Mardi</option>
+            <option>Joynab Kowcher Sumi</option><option>Farjana Akter</option><option>Farjana Arefin</option>
+            <option>Sayeeda Nurjahan Begum</option><option>Marzina Sultana</option><option>Taslima Akter</option>
+            </select>
+    </div>
+    <div class="field">
+        <label>Submission Date</label>
+        <input type="date" id="submission" name="submission" required>
+    </div>
+
+    <div class="section-title">Child's Particulars</div>
+    <div class="field">
+        <label>Name of the Child</label>
+        <input type="text" id="child" name="child" placeholder="Enter Full Name" required>
+    </div>
+    <div class="field">
+        <label>Sex</label>
+        <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="sex" value="Boy" required> Boy</label>
+            <label class="radio-item"><input type="radio" name="sex" value="Girl"> Girl</label>
+            <label class="radio-item"><input type="radio" name="sex" value="Other"> Other</label>
+        </div>
+    </div>
+    <div class="field">
+        <label>Date of Birth</label>
+        <input type="date" id="dob" name="dob" onchange="calculateAge(this.value)" required>
+    </div>
+    <div class="field">
+        <label>Calculated Age</label>
+        <input type="text" id="age" name="age" readonly placeholder="Auto-calculated">
+    </div>
+    <div class="field">
+        <label>Disability Status</label>
+        <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="disability" value="Yes" required> Yes</label>
+            <label class="radio-item"><input type="radio" name="disability" value="No"> No</label>
+        </div>
+    </div>
+
+    <div class="section-title">Identification Numbers</div>
+    <div class="field"><label>FCN Number</label><input type="text" id="fcn" name="fcn"></div>
+    <div class="field"><label>Individual proGres ID</label><input type="text" id="progres" name="progres"></div>
+    <div class="field"><label>CPIMS+ ID</label><input type="text" id="cpims" name="cpims"></div>
+
+    <div class="section-title">Location Details</div>
+    <div class="field">
+        <label>Existed Camp (CMO)</label>
+        <select id="exCamp" name="exCamp">
+            <option value="">--Select--</option>
+            <option>Camp 2E</option><option>Camp 2W</option><option>Camp 6</option><option>Camp 7</option>
+            <option>Camp 25</option><option>Camp 26</option><option>Camp 27</option><option>Camp NYP RC</option>
+            </select>
+    </div>
+    <div class="field">
+        <label>MPCAC Number</label>
+        <select id="mpcac" name="mpcac">
+            <option value="">--Select--</option>
+            <option>MPCAC-1</option><option>MPCAC-2</option><option>MPCAC-3</option><option>MPCAC-4</option>
+            <option>MPCAC-5</option><option>MPCAC-6</option><option>MPCAC-7</option><option>MPCAC-8</option>
+            <option>MPCAC-9</option><option>MPCAC-10</option><option>MPCAC-11</option><option>MPCAC-12</option>
+            <option>NA</option>
+            </select>
+    </div>
+    <div class="field">
+        <label>Initiated Outstanding Camp</label>
+        <select id="outCamp" name="outCamp">
+             <option value="">--Select--</option>
+            <option>Camp 8E</option><option>Camp 8W</option><option>Camp 9</option><option>Camp 10</option>
+            <option>Camp 11</option><option>Camp 12</option><option>Camp 13</option><option>Camp 14</option>
+            <option>Camp 15</option><option>Camp 16</option><option>Camp 17</option><option>Camp 18</option>
+            <option>Camp 19</option><option>Camp 20</option><option>Camp 21</option><option>Camp 22</option>
+            <option>Camp 24</option><option>Camp NYP RC</option><option>NA</option>
+             </select>
+    </div>
+    <div class="field"><label>Block</label><input type="text" id="block" name="block"></div>
+    <div class="field"><label>Sub-Block</label><input type="text" id="subblock" name="subblock"></div>
+
+    <div class="section-title">Caregiver & Purpose</div>
+    <div class="field"><label>Caregiver Name</label><input type="text" id="caregiver" name="caregiver"></div>
+    <div class="field"><label>Relationship</label><input type="text" id="relationship" name="relationship"></div>
+<div class="field">
+    <label>BID Purpose</label>
+    <select id="purpose" name="purpose" onchange="togglePurposeOther(this.value)">
+        <option value="">--Select--</option>
+        <option>Separated Child</option>
+        <option>Unaccompanied Child (UAC)</option>
+        <option>Durable Solution</option>
+        <option>Resettlement</option>
+        <option>Custody Issue</option>
+        <option>Other</option>
+    </select>
+    <input type="text" id="purposeOther" placeholder="Please specify other purpose..." 
+           style="display:none; margin-top:10px; border-color: var(--secondary);">
+</div>
+    <div class="field">
+        <label>Protection Concern</label>
+        <select id="concern" name="concern">
+            <option value="">--Select Concern--</option>
+<option>UAC</option>
+<option>SC identified</option>
+<option>CHH identified</option>
+<option>Child Marriage</option>
+<option>Child Mother</option>
+<option>Child Carer</option>
+<option>Teenage Pregnancy</option>
+<option>Physical Abuse</option>
+<option>Emotional or Psycological Abuse</option>
+<option>Child Sexual Abuse and/ or Exploitation*</option>
+<option>Child exposed to SGBV</option>
+<option>Child Neglect</option>
+<option>Child Labour</option>
+<option>Child exposed to Trafficking</option>
+<option>Child Associated with Armed or Criminal Groups</option>
+<option>Child in conflict with the law (accused of any offence)</option>
+<option>Referred for Tracing</option>
+<option>Children Reunified</option>
+<option>Children in Foster Care</option>
+<option>Child with Disability (Mental)</option>
+<option>Physical Disability or Impairment</option>
+<option>Children with serious illness identified (including malnutrition)</option>
+<option>Child with Trauma/distress</option>
+<option>Victim of harmful traditional/practices (or at risk of)</option>
+<option>Special Education Needs</option>
+<option>Other Vulnerable</option>
+
+            </select>
+    </div>
+
+    <div class="section-title">Assessment Category</div>
+    <div class="field">
+        <div class="radio-group">
+            <label class="radio-item"><input type="radio" name="category" value="CODEC Self Initiated"> CODEC Self Initiated</label>
+            <label class="radio-item"><input type="radio" name="category" value="UNHCR Referred"> UNHCR Referred</label>
+        </div>
+    </div>
+    <div class="field">
+        <label>Referral Date from UNHCR</label>
+        <input type="date" id="referral" name="referral">
+    </div>
+
+    <div class="actions">
+        <button type="button" class="btn-submit" onclick="startMultifunctionalSubmit()">Submit BID Registration</button>
+    </div>
+</form>
+<div id="dupModal" class="modal">
+    <div class="modal-content">
+        <h3 id="alertTitle" style="color:var(--warning)">⚠️ Duplicate Alert</h3>
+        <p id="alertMsg">Review carefully:</p>
+        
+        <div id="modalBody"></div>
+        
+        <div style="margin-top:20px; display:flex; gap:10px;">
+            <button id="finalSubmitBtn" class="btn-submit">Submit Anyway</button>
+            <button onclick="closeModal()" style="background:rgba(255,255,255,0.1); border:none; color:white; padding:15px; border-radius:10px; cursor:pointer; flex:1;">Cancel & Fix</button>
+        </div>
+    </div>
+</div>
+
+<div id="loading" class="loading-overlay">⏳ Verifying with Database...</div>
+
+<script>
+// --- System Start Logic (Unchanged) ---
+    function bootSystem() {
+        playSnd('sndIntro');
+        console.log("UNHCR–CODEC BID System: Initialized.");
+        document.removeEventListener('click', bootSystem);
+    }
+    document.addEventListener('click', bootSystem);
+
+    function togglePurposeOther(val) {
+        const otherBox = document.getElementById('purposeOther');
+        if (val === 'Other') {
+            otherBox.style.display = 'block';
+            otherBox.focus();
+        } else {
+            otherBox.style.display = 'none';
+            otherBox.value = '';
+        }
+    }
+
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxrGnmihm9BMyKhGsMxagtbR9kB511XrDYr_uAYg8w1ReBw2f7X1VZgh-OKIaw4ZwxGGQ/exec"; 
+
+    window.onload = generateID;
+
+    function generateID() {
+        const now = new Date();
+        const dmy = String(now.getDate()).padStart(2,'0') + String(now.getMonth()+1).padStart(2,'0') + String(now.getFullYear()).slice(-2);
+        const rnd = Math.floor(100 + Math.random() * 900);
+        document.getElementById('autoBidId').value = `BID-${dmy}-${rnd}`;
+    }
+
+    function calculateAge(dob) {
+        if(!dob) return;
+        const diff = new Date() - new Date(dob);
+        document.getElementById('age').value = Math.floor(diff / 31557600000);
+    }
+
+// --- UPDATED LOGIC FLOW ---
+
+// STEP 1: Main Gateway
+async function startMultifunctionalSubmit() {
+    const form = document.getElementById('bidForm');
+    if(!form.checkValidity()) { form.reportValidity(); return; }
+
+    const cpims = document.getElementById('cpims').value.trim();
+    
+    // Logic: If CPIMS is empty, show warning first. Otherwise, check duplicates.
+    if (cpims === "") {
+        renderCpimsVacantAlert();
+    } else {
+        proceedToDuplicateCheck();
+    }
+}
+
+// STEP 2: Alert for Empty CPIMS (Redirects to Check, not Save)
+function renderCpimsVacantAlert() {
+    const sBtn = document.getElementById('finalSubmitBtn');
+    document.getElementById('alertTitle').innerText = "🔍 CPIMS+ Field is Vacant";
+    document.getElementById('alertTitle').style.color = "var(--warning)";
+    document.getElementById('alertMsg').innerHTML = "You haven't entered a CPIMS+ ID. Choose an option:";
+    document.getElementById('modalBody').innerHTML = "<p>1. Have CPIMS ID? Click Cancel and enter.<br>2. No CPIMS ID? Click the button below to <b>Verify Duplicates & Submit</b>.</p>";
+    
+    sBtn.style.display = "block";
+    sBtn.innerText = "Check Duplicates & Submit";
+    
+    // CRITICAL FIX: Instead of saving, it now triggers the duplicate check
+    sBtn.onclick = function() {
+        closeModal();
+        proceedToDuplicateCheck();
+    };
+    
+    document.getElementById('dupModal').style.display = 'block';
+}
+
+// STEP 3: Duplicate Verification Engine
+async function proceedToDuplicateCheck() {
+    const loading = document.getElementById('loading');
+    loading.style.display = 'flex';
+    loading.innerHTML = "⏳ Verifying with Database...";
+
+    const name = document.getElementById('child').value.trim();
+    const prog = document.getElementById('progres').value.trim();
+    const cpims = document.getElementById('cpims').value.trim();
+
+    const params = new URLSearchParams({
+        action: 'check',
+        name: name,
+        progres: prog,
+        cpims: cpims
+    });
+
+    try {
+        const response = await fetch(`${WEB_APP_URL}?${params.toString()}`);
+        const result = await response.json();
+        loading.style.display = 'none';
+
+        if (result.duplicates && result.duplicates.length > 0) {
+            renderDuplicateTable(result.duplicates);
+        } else {
+            executeFinalSave(); // All clear, save now
+        }
+    } catch (e) {
+        loading.style.display = 'none';
+        console.error("Check Error:", e);
+        alert("Security check interrupted. Please verify data manually.");
+        executeFinalSave(); 
+    }
+}
+
+// STEP 4: Render Duplicate Table & Set Final Button Behavior
+function renderDuplicateTable(dups) {
+    let html = `<table class="dup-table"><thead><tr><th>BID ID</th><th>Match Info</th></tr></thead><tbody>`;
+    let isProgresDup = false;
+
+    dups.forEach(d => {
+        if(d.match.toLowerCase().includes("progres")) isProgresDup = true;
+        html += `<tr><td>${d.id}</td><td class="match-tag">${d.match}</td></tr>`;
+    });
+    html += `</tbody></table>`;
+    
+    document.getElementById('modalBody').innerHTML = html;
+    const sBtn = document.getElementById('finalSubmitBtn');
+
+    if (isProgresDup) {
+        // BLOCK SUBMISSION
+        sBtn.style.display = 'none';
+        document.getElementById('alertTitle').innerText = "🛑 Progres Duplicate Found";
+        document.getElementById('alertTitle').style.color = "var(--danger)";
+        document.getElementById('alertMsg').innerHTML = "This <b>Progres Number</b> already exists. You cannot submit this record.";
+    } else {
+        // ALLOW SUBMISSION WITH WARNING
+        sBtn.style.display = 'block';
+        sBtn.innerText = "I am conscious, Submit Anyway";
+        document.getElementById('alertTitle').innerText = "⚠️ Duplicate Alert";
+        document.getElementById('alertTitle').style.color = "var(--warning)";
+        document.getElementById('alertMsg').innerText = "Review carefully:";
+        sBtn.onclick = executeFinalSave; // Set final save function here
+    }
+    document.getElementById('dupModal').style.display = 'block';
+}
+
+// STEP 5: Final Database Save (Unchanged Operation)
+async function executeFinalSave() {
+    closeModal();
+    const loading = document.getElementById('loading');
+    loading.style.display = 'flex';
+    loading.innerHTML = "🚀 Transmitting to Database...";
+
+    const form = document.getElementById('bidForm');
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    if (data.purpose === "Other") {
+        data.purpose = "Other: " + document.getElementById('purposeOther').value; 
+    }
+
+    try {
+        await fetch(WEB_APP_URL, {
+            method: "POST",
+            mode: "no-cors", 
+            body: JSON.stringify(data)
+        });
+
+        loading.style.display = 'none';
+        alert("✅ BID Successfully Registered!");
+        form.reset();
+        document.getElementById('purposeOther').style.display = 'none';
+        generateID();
+    } catch (e) {
+        loading.style.display = 'none';
+        alert("Submission failed. Please check your connection.");
+    }
+}
+
+function closeModal() { document.getElementById('dupModal').style.display = 'none'; }
+
+// --- Sound and Security Scripts (Unchanged) ---
+    function playSnd(id) {
+        const audio = document.getElementById(id);
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play().catch(e => console.log("Audio playback prevented:", id));
+        }
+    }
+
+    function initializeSystem() {
+        playSnd('sndIntro');
+        const sounds = ['sndTech', 'sndType', 'sndSuccess', 'sndWarning'];
+        sounds.forEach(s => {
+            const a = document.getElementById(s);
+            if(a) { a.volume = 1.0; }
+        });
+        console.log("System Initialized");
+        document.removeEventListener('click', initializeSystem);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('click', initializeSystem);
+        document.querySelectorAll('input, select, button').forEach(el => {
+            el.addEventListener('focus', () => playSnd('sndTech'));
+            if (el.tagName === 'INPUT') {
+                el.addEventListener('input', () => playSnd('sndType'));
+            }
+            if (el.classList.contains('btn-submit')) {
+                el.addEventListener('click', (e) => playSnd('sndSuccess'));
+            }
+        });
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        playSnd('sndWarning');
+    });
+
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123) return false;
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
+        if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) return false;
+    };
+</script>
+</body>
+
+</html>
+
+
+
