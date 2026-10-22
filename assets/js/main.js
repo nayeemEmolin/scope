@@ -33,7 +33,7 @@
  'Unable to submit this form.':'无法提交此表单。','Submitting…':'正在提交…','Your form has been sent. Please check with the course team if you need confirmation.':'表单已发送。如需确认，请联系课程团队。','Submission could not be completed. Please try again or use the existing course registration link.':'提交失败，请重试或使用现有课程报名链接。','Submit registration':'提交报名'
 
  };
- const normalize=s=>s.replace(/\\s+/g,' ').trim();
+ const normalize=s=>s.replace(/\s+/g,' ').trim();
  const setLang=lang=>{
   body.classList.toggle('bn',lang==='bn');
   if(langBtn){langBtn.textContent=lang==='bn'?'EN':'বাংলা';langBtn.setAttribute('aria-label',lang==='bn'?'Switch to English':'বাংলায় দেখুন');}
