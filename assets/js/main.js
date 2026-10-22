@@ -17,6 +17,21 @@
  '3 months':'৩ মাস','Online • Live classes':'অনলাইন • সরাসরি ক্লাস','Online • Bangla':'অনলাইন • বাংলা','Live sessions':'লাইভ সেশন',
  'Our purpose':'আমাদের উদ্দেশ্য','Education designed around real careers.':'বাস্তব ক্যারিয়ারকে সামনে রেখে শিক্ষা।','Career-oriented':'ক্যারিয়ারভিত্তিক','Practical by design':'ব্যবহারিকভাবে তৈরি','Growth-minded':'উন্নয়নমুখী',
  'Let’s keep learning.':'চলুন, শেখা চালিয়ে যাই।','Stay connected':'যোগাযোগ রাখুন','Sharpen your skills. Shape your future.':'দক্ষতা বাড়ান। ভবিষ্যৎ গড়ুন।'
+
+ 'Skills for your next chapter.':'为下一阶段积累技能。',
+ '100% online · Practical learning · Bangla-friendly experience':'全程在线 · 注重实践 · 支持孟加拉语学习',
+ 'Learning pathways':'学习方向','100% Online learning':'100% 在线学习','Bangladesh-focused':'面向孟加拉国','Room to grow':'持续成长',
+ 'Practical learning':'实践导向学习','Live & recorded learning pathways':'直播与录播学习','Skills for real-world work':'面向实际工作的技能','Certificate on course completion*':'完成课程后可获结业证书*',
+ 'Explore SCOPE':'探索 SCOPE','Learn what you need to do your best work.':'学习做好工作的实用技能。','Choose a pathway that fits your career goals. Current offerings and planned courses are clearly labelled so you always know what is available.':'选择符合职业目标的学习方向。现有课程和计划中的课程均有明确标注，方便了解当前开放的课程。',
+ 'Practical MEAL Training':'实用 MEAL 培训','Monitoring, Evaluation, Accountability & Learning for NGO and humanitarian professionals.':'面向非政府组织及人道主义从业者的监测、评估、问责与学习培训。','View current course ↗':'查看当前课程 ↗',
+ 'Computer Skills for Office Work':'办公电脑技能','Practical computer and productivity skills for everyday professional office work.':'提升日常办公所需的电脑操作与工作效率技能。','MIS for Development Professionals':'发展领域专业人士的 MIS','Understand management information systems, structured data and reporting workflows.':'了解管理信息系统、结构化数据及报告工作流程。','Data Analytics: Excel & Power BI':'数据分析：Excel 与 Power BI','Turn raw data into clear tables, dashboards and actionable insights.':'将原始数据转化为清晰的表格、仪表板和可执行的见解。','Python & SQL for Data Analysis':'使用 Python 与 SQL 进行数据分析','An introduction to data preparation and analysis using Python and SQL.':'介绍如何使用 Python 与 SQL 进行数据整理和分析。','Research Methods: SPSS, R & Report Writing':'研究方法：SPSS、R 与报告写作','Build research skills from study design and analysis to proposal and report writing.':'从研究设计、数据分析到研究计划与报告写作，全面提升研究技能。',
+ 'Build practical Monitoring, Evaluation, Accountability & Learning skills for NGO and humanitarian work.':'学习适用于非政府组织和人道主义工作的监测、评估、问责与学习技能。',
+ 'Office Skills':'办公技能','Data Analytics':'数据分析','Research':'研究','To be announced':'待公布','Online • Live classes':'在线 • 直播课程','Online':'在线','Current Course':'当前课程','Course details coming soon':'课程详情即将公布','Go to registration ↗':'前往报名 ↗',
+ 'A practical, Bangla-medium course designed for NGO and humanitarian professionals, project staff, MEAL/M&E practitioners, and development-sector job seekers.':'这是一门以孟加拉语授课的实践课程，适合非政府组织和人道主义从业者、项目工作人员、MEAL/M&E 专业人员及发展领域求职者。',
+ 'MEAL frameworks and project indicators':'MEAL 框架与项目指标','Monitoring tools and data collection':'监测工具与数据收集','Accountability, feedback and learning':'问责、反馈与学习','Practical reporting and data use':'实践报告与数据应用',
+ 'The registration form is designed, but its Google Sheets connection is not configured yet. Please use the existing registration platform, or ask the site administrator to deploy the Apps Script endpoint.':'报名表已设计完成，但尚未配置 Google Sheets 连接。请使用现有报名平台，或联系网站管理员部署 Apps Script 接口。',
+ 'Unable to submit this form.':'无法提交此表单。','Submitting…':'正在提交…','Your form has been sent. Please check with the course team if you need confirmation.':'表单已发送。如需确认，请联系课程团队。','Submission could not be completed. Please try again or use the existing course registration link.':'提交失败，请重试或使用现有课程报名链接。','Submit registration':'提交报名'
+
  };
  const normalize=s=>s.replace(/\\s+/g,' ').trim();
  const setLang=lang=>{
