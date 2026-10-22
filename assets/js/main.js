@@ -53,6 +53,8 @@
  'This course is planned. Dates, fees and registration will be announced after confirmation.':'এই কোর্সটি পরিকল্পনাধীন। তারিখ, ফি ও রেজিস্ট্রেশনের তথ্য নিশ্চিত হলে জানানো হবে।','The existing course platform contains the current registration information and next steps.':'বর্তমান রেজিস্ট্রেশন তথ্য ও পরবর্তী ধাপ জানতে বিদ্যমান কোর্স প্ল্যাটফর্ম দেখুন।',
  'The registration form is designed, but its Google Sheets connection is not configured yet. Please use the existing registration platform, or ask the site administrator to deploy the Apps Script endpoint.':'রেজিস্ট্রেশন ফর্মটি তৈরি করা হয়েছে, তবে Google Sheets সংযোগ এখনো সেটআপ করা হয়নি। বিদ্যমান রেজিস্ট্রেশন প্ল্যাটফর্ম ব্যবহার করুন অথবা সাইট প্রশাসকের সঙ্গে যোগাযোগ করুন।',
  'Your form has been sent. Please check with the course team if you need confirmation.':'আপনার ফর্ম পাঠানো হয়েছে। নিশ্চিতকরণ প্রয়োজন হলে কোর্স টিমের সঙ্গে যোগাযোগ করুন।','Submission could not be completed. Please try again or use the existing course registration link.':'ফর্ম জমা দেওয়া যায়নি। আবার চেষ্টা করুন অথবা বিদ্যমান রেজিস্ট্রেশন লিংক ব্যবহার করুন।','Unable to submit this form.':'এই ফর্মটি জমা দেওয়া যাচ্ছে না।'
+,
+ 'Next batch:':'পরবর্তী ব্যাচ:','Starts 5 December 2026 · Schedule:':'শুরু ৫ ডিসেম্বর ২০২৬ · সময়সূচি:','Wednesday, Friday & Saturday, 10:00–11:30 PM (Bangladesh time) · Registration deadline:':'বুধ, শুক্র ও শনিবার, রাত ১০:০০–১১:৩০ (বাংলাদেশ সময়) · রেজিস্ট্রেশনের শেষ তারিখ:','25 November 2026. Please confirm current availability on the registration platform before payment.':'২৫ নভেম্বর ২০২৬। পেমেন্টের আগে রেজিস্ট্রেশন প্ল্যাটফর্মে বর্তমান আসন-প্রাপ্যতা নিশ্চিত করুন।'
 
 
  };
@@ -70,7 +72,10 @@
    const original=el.dataset.scopeOriginalText;if(!original)return;
    if(el.parentElement?.closest('[data-scope-translated="true"]'))return;
    if(lang==='bn'&&translations[original]){
-    el.textContent=translations[original];el.dataset.scopeTranslated='true';
+    if(el.matches('.hero h1')&&original==='Skills for your next chapter.')el.innerHTML='আপনার আগামী <em>অধ্যায়</em> গড়ুন।';
+    else if(original==='Learn what you needto do your best work.')el.innerHTML='আপনার কাজ আরও ভালো করতে<br>প্রয়োজনীয় দক্ষতা শিখুন।';
+    else if(original==='Less theory alone.More skills you can use.')el.innerHTML='শুধু তত্ত্ব নয়—<br>বাস্তবে কাজে লাগানোর দক্ষতা।';
+    else el.textContent=translations[original];el.dataset.scopeTranslated='true';
    }else if(lang==='en'&&el.dataset.scopeOriginalHtml!==undefined){
     el.innerHTML=el.dataset.scopeOriginalHtml;delete el.dataset.scopeTranslated;
    }
