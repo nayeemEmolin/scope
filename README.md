@@ -1,19 +1,15 @@
-# SCOPE — Cinematic Universe Redesign
+# SCOPE — Learn · Build · Grow
 
-SCOPE is a static, GitHub Pages-compatible professional learning platform.
+A static, GitHub Pages-compatible learning platform for School for Career-Oriented Professional Education.
 
-## Visual system and motion
-- Navy, royal blue and teal art direction with an orbital learning-system visual language.
-- Canvas particle field with inverse-square attraction, velocity, damping and pointer interaction. This is a simplified physics-inspired effect, not a validated astrophysics or N-body solver.
-- CSS depth/orbits, kinetic typography, SVG path drawing, scroll-triggered reveals, magnetic CTAs and restrained card tilt.
-- Responsive layouts, keyboard focus, skip link, mobile navigation and reduced-motion support.
-- No runtime WebGL/Three.js/GSAP dependency. Google Fonts are optional; system fallbacks remain.
+## Platform
+Includes the homepage, course catalogue, planned course detail pages, About, Contact, MEAL course detail, and the optional registration template. Planned courses remain marked as upcoming and do not claim open enrolment.
 
-## Deploy
-This redesign is on branch redesign/cinematic-universe, not main. Review the branch or pull request before merging. GitHub Pages can publish from repository root on main.
+## Unified redesign
+`assets/css/redesign.css` layers a cohesive editorial visual system across every page: warm off-white, deep forest/navy, lime accents, modern typography, accessible focus states, refined surfaces and responsive adjustments. The existing page routes and course scripts are retained to reduce risk to the current MEAL flow.
 
-## Course accuracy
-The existing MEAL page and registration flow were not changed. Other pathways are marked Coming Soon; no new dates, fees or enrollment claims were invented.
+## MEAL registration
+The MEAL call-to-action destination remains `https://nayeememolin.github.io/scope/`. The optional form is not a replacement for a configured/deployed backend. Do not claim form submissions are stored until an endpoint is deployed and tested.
 
-## QA note
-The available GitHub connector workflow cannot run a full browser screenshot or Lighthouse audit. Please preview on desktop and mobile before merging.
+## Validation still required
+Before publishing, test desktop and mobile widths, language switching, course search/filter, all internal links, keyboard navigation, reduced-motion settings, browser console, and the end-to-end MEAL registration destination. Static edits do not prove browser-level functionality.
