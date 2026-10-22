@@ -11,3 +11,38 @@
 :focus-visible{outline:3px solid var(--teal);outline-offset:4px}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.course-card,.pathway-card,.feature-card{transition:transform var(--motion-medium) var(--ease-out),box-shadow var(--motion-medium) var(--ease-out)}.course-card:hover,.pathway-card:hover,.feature-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px rgba(16,42,67,.12)}.btn:active{transform:translateY(0) scale(.985)}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+
+/* SCOPE premium refinement v2 — editorial layout and a restrained orbital system */
+.hero{padding:96px 0 88px;background:radial-gradient(ellipse at 80% 40%,rgba(22,184,166,.11),transparent 30%),radial-gradient(ellipse at 74% 64%,rgba(23,105,194,.12),transparent 34%),linear-gradient(135deg,#f7fbff 0%,#fff 56%,#edf5fc 100%)}
+.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:clamp(28px,5vw,76px)}
+.hero-copy{position:relative;z-index:2}
+.hero h1{max-width:680px;letter-spacing:-.06em;line-height:1.02;font-size:clamp(3rem,6.1vw,5.7rem)}
+.hero h1 em{background:linear-gradient(105deg,#1769c2 12%,#16a89b 92%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy .lead{max-width:570px;line-height:1.75}
+.universe-art{isolation:isolate;min-height:500px;overflow:visible;border-radius:30px;background:radial-gradient(ellipse at center,rgba(255,255,255,.95),rgba(239,247,252,.38) 54%,transparent 75%)}
+.universe-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.universe-halo{position:absolute;left:50%;top:49%;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+.halo-one{width:270px;height:270px;background:radial-gradient(circle,rgba(22,184,166,.12),rgba(23,105,194,.06) 46%,transparent 72%);filter:blur(3px)}
+.halo-two{width:400px;height:400px;border:1px solid rgba(23,105,194,.07);box-shadow:0 0 0 34px rgba(23,105,194,.018),0 0 0 68px rgba(22,184,166,.018)}
+.universe-orbit{position:absolute;left:50%;top:49%;border:1px solid rgba(23,105,194,.20);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+.orbit-one{width:235px;height:235px;animation:orbit-spin 24s linear infinite}
+.orbit-two{width:330px;height:190px;transform:translate(-50%,-50%) rotate(-31deg);border-color:rgba(22,184,166,.30);animation:orbit-tilt 32s linear infinite}
+.orbit-three{width:390px;height:270px;transform:translate(-50%,-50%) rotate(38deg);border-color:rgba(16,42,67,.11);animation:orbit-spin 42s linear infinite reverse}
+.orbit-node{position:absolute;width:11px;height:11px;border-radius:50%;top:50%;left:-5px;box-shadow:0 0 0 5px rgba(23,105,194,.09),0 0 18px rgba(23,105,194,.35)}
+.node-blue{background:#1769c2}.node-teal{background:#16b8a6;left:auto;right:16%;top:-5px;box-shadow:0 0 0 5px rgba(22,184,166,.10),0 0 18px rgba(22,184,166,.38)}.node-white{background:#fff;border:2px solid #1769c2;left:auto;right:4%;top:22%;width:9px;height:9px}
+.universe-core{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:218px;min-height:218px;padding:24px 18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(242,249,253,.94));border:1px solid rgba(255,255,255,.95);box-shadow:0 18px 65px rgba(16,42,67,.12),inset 0 0 0 8px rgba(255,255,255,.55);z-index:2}
+.core-kicker{font-size:.56rem;letter-spacing:.15em;font-weight:800;color:#668096}
+.core-mark{position:relative;width:48px;height:48px;display:grid;place-items:center;margin:12px 0;border-radius:16px;background:#102a43;color:#8cf3de;font:800 1.7rem Manrope;box-shadow:0 8px 20px rgba(16,42,67,.18)}
+.core-mark span{position:absolute;right:7px;top:7px;width:5px;height:5px;border-radius:50%;background:#16b8a6}
+.universe-core strong{font:800 1.02rem Manrope;color:#102a43;letter-spacing:-.04em}
+.universe-core small{margin-top:5px;color:#6b8092;font-size:.68rem}
+.universe-label{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:12px 15px;border-radius:14px;border:1px solid rgba(220,230,239,.9);background:rgba(255,255,255,.92);box-shadow:0 10px 30px rgba(16,42,67,.08);backdrop-filter:blur(10px)}
+.universe-label span:last-child{display:grid;gap:2px}.universe-label b{font-size:.68rem;letter-spacing:.09em;color:#23445e}.universe-label small{font-size:.72rem;color:#6b8092}
+.label-dot{width:8px;height:8px;flex:none;border-radius:50%;background:#1769c2;box-shadow:0 0 0 4px #1769c21b}.teal-dot{background:#16b8a6;box-shadow:0 0 0 4px #16b8a61b}
+.label-top{top:8%;right:0}.label-bottom{bottom:12%;left:-1%}
+.universe-caption{position:absolute;bottom:1%;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:.75rem;color:#71869a;letter-spacing:.015em}.universe-caption span{color:#16a89b;font-size:1rem}
+@keyframes orbit-spin{to{rotate:360deg}}@keyframes orbit-tilt{to{rotate:329deg}}
+@media(max-width:980px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.9fr);gap:24px}.universe-art{min-height:420px}.orbit-three{width:330px;height:230px}.orbit-two{width:285px;height:170px}.orbit-one{width:205px;height:205px}.universe-core{width:190px;min-height:190px}.halo-two{width:340px;height:340px}.label-top{right:-4px}.label-bottom{left:-4px}}
+@media(max-width:720px){.hero{padding:44px 0 56px}.hero-grid{grid-template-columns:1fr;gap:8px}.hero-art{order:0}.universe-art{min-height:370px;margin:0 -4px}.orbit-three{width:300px;height:205px}.orbit-two{width:250px;height:150px}.orbit-one{width:175px;height:175px}.universe-core{width:165px;min-height:165px;padding:16px}.core-mark{width:39px;height:39px;margin:8px 0}.universe-core strong{font-size:.9rem}.universe-core small{font-size:.61rem}.halo-two{width:280px;height:280px}.halo-one{width:200px;height:200px}.label-top{top:3%;right:1%}.label-bottom{bottom:9%;left:0}.universe-label{padding:9px 11px}.universe-label small{font-size:.64rem}.universe-caption{font-size:.66rem;bottom:0}.hero-copy .lead{margin:18px 0 24px}.hero h1{font-size:clamp(2.8rem,13vw,4.3rem)}}
+@media(prefers-reduced-motion:reduce){.orbit-one,.orbit-two,.orbit-three{animation:none!important}.universe-canvas{display:none}}
