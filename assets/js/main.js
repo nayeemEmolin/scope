@@ -24,12 +24,18 @@
   if(langBtn){langBtn.textContent=lang==='bn'?'EN':'বাংলা';langBtn.setAttribute('aria-label',lang==='bn'?'Switch to English':'বাংলায় দেখুন');}
   document.documentElement.lang=lang==='bn'?'bn':'en';
   const candidates=$$('a,button,h1,h2,h3,h4,p,li,summary,span,small,b,strong,blockquote,label,option');
-  candidates.forEach(el=>{if(el.closest('[aria-hidden="true"]'))return;if(!el.dataset.scopeOriginalText)el.dataset.scopeOriginalText=normalize(el.textContent);});
+  candidates.forEach(el=>{
+   if(el.closest('[aria-hidden="true"]'))return;
+   if(!el.dataset.scopeOriginalText){el.dataset.scopeOriginalText=normalize(el.textContent);el.dataset.scopeOriginalHtml=el.innerHTML;}
+  });
   candidates.forEach(el=>{
    const original=el.dataset.scopeOriginalText;if(!original)return;
    if(el.parentElement?.closest('[data-scope-translated="true"]'))return;
-   if(lang==='bn'&&translations[original]&&!el.children.length){el.textContent=translations[original];el.dataset.scopeTranslated='true';}
-   else if(lang==='en'&&el.dataset.scopeOriginalText!==undefined&&!el.children.length){el.textContent=original;delete el.dataset.scopeTranslated;}
+   if(lang==='bn'&&translations[original]){
+    el.textContent=translations[original];el.dataset.scopeTranslated='true';
+   }else if(lang==='en'&&el.dataset.scopeOriginalHtml!==undefined){
+    el.innerHTML=el.dataset.scopeOriginalHtml;delete el.dataset.scopeTranslated;
+   }
   });
   try{localStorage.setItem('scope-lang',lang)}catch(e){}
  };
