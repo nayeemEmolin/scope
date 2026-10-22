@@ -29,3 +29,52 @@ input,select,textarea{border-radius:12px!important;border-color:#cdd8ce!importan
 .breadcrumbs{color:var(--scope-muted)!important;font-size:12px}.breadcrumbs a{color:var(--scope-blue)!important}[hidden]{display:none!important}
 @media(max-width:760px){.topbar{padding-inline:16px}.nav-main,.nav-links{box-shadow:0 18px 30px #10251e18}.nav-main a,.nav-links a{padding-block:12px}.hero-title,.cosmos-hero h1,.page-hero h1{letter-spacing:-.06em!important}.section,.section-block{padding-block:52px}.course-card:hover,.course-tile:hover,.path-card:hover,.feature-card:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal,.in-view,.visible{opacity:1!important;transform:none!important}#universe{display:none!important}}
+
+/* Shared landing-page language applied consistently across inner pages */
+.site-header{position:sticky!important;top:0!important;z-index:100!important;min-height:78px!important;padding:0!important}
+.site-header .container.nav{width:min(1180px,calc(100% - 48px))!important;max-width:1180px!important;min-height:78px!important;margin-inline:auto!important;display:flex!important;align-items:center!important;gap:28px!important}
+.site-header .brand{display:inline-flex!important;align-items:center!important;gap:11px!important;flex-shrink:0!important}
+.site-header .brand img{width:42px!important;height:42px!important;object-fit:contain!important;border-radius:12px!important;background:#fff!important;padding:3px!important}
+.site-header .nav-links{display:flex!important;align-items:center!important;gap:clamp(12px,2vw,28px)!important;margin-left:auto!important}
+.site-header .nav-actions{display:flex!important;align-items:center!important;gap:10px!important}
+.site-header .nav-actions .btn{padding:11px 17px!important;font-size:13px!important;white-space:nowrap!important}
+.site-header .menu-toggle{width:42px!important;height:42px!important;display:grid!important;place-items:center!important}
+.page-hero{padding:clamp(58px,8vw,108px) 0!important;min-height:300px!important}
+.page-hero>.container{width:min(1180px,calc(100% - 48px))!important;max-width:1180px!important;margin-inline:auto!important;position:relative!important;z-index:1!important}
+.page-hero .breadcrumbs{margin-bottom:26px!important;color:#bdc9c0!important}
+.page-hero .breadcrumbs a{color:var(--scope-lime)!important}
+.page-hero .eyebrow{display:inline-flex!important;align-items:center!important;gap:9px!important;text-transform:uppercase!important;font-size:11px!important;letter-spacing:.14em!important}
+.page-hero h1{max-width:900px!important;margin:18px 0 18px!important;font-size:clamp(2.5rem,6.4vw,5.5rem)!important}
+.page-hero .lead,.page-hero p{max-width:760px!important;font-size:clamp(1rem,1.7vw,1.2rem)!important;line-height:1.75!important}
+.section>.container,.section-block>.container{width:min(1180px,calc(100% - 48px))!important;max-width:1180px!important;margin-inline:auto!important}
+.section{padding-block:clamp(54px,7vw,92px)!important}
+.section.compact{padding-block:clamp(36px,5vw,64px)!important}
+.section h2,.section-title,.section-heading{font-size:clamp(1.8rem,3.5vw,3.25rem)!important}
+.two-col,.detail-grid{gap:clamp(28px,5vw,72px)!important;align-items:start!important}
+.cards,.course-grid{gap:18px!important}
+.course-card,.course-tile,.path-card,.feature-card,.step-card,.info-card,.content-panel,.quote-card,.form-card,.registration-card,.detail-card,.side-panel{padding:clamp(22px,3vw,34px)!important;border-radius:20px!important}
+.course-card .course-icon{margin-bottom:18px!important}
+.course-card h3,.course-tile h3,.path-card h3,.feature-card h3{font-size:clamp(1.2rem,2vw,1.6rem)!important}
+.side-panel{position:relative!important;top:auto!important}
+.detail-meta>div{padding:14px 0!important;border-bottom:1px solid var(--scope-line)!important}
+.detail-meta>div:last-child{border-bottom:0!important}
+.check-list li{padding-block:8px!important}
+.site-footer{padding-top:40px!important}
+.site-footer .container.footer-bottom{width:min(1180px,calc(100% - 48px))!important;max-width:1180px!important;margin-inline:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:20px!important;padding-block:24px!important}
+.site-footer a{transition:color .2s ease!important}
+@media(max-width:900px){
+ .site-header .container.nav{gap:14px!important}
+ .site-header .nav-links{gap:12px!important}
+ .site-header .nav-actions .btn{display:none!important}
+}
+@media(max-width:760px){
+ .site-header .container.nav{width:calc(100% - 32px)!important;min-height:70px!important}
+ .site-header .nav-links{display:none!important;position:absolute!important;left:16px!important;right:16px!important;top:calc(100% - 1px)!important;padding:12px!important;background:#f6f7f0!important;border:1px solid var(--scope-line)!important;border-radius:16px!important;box-shadow:var(--scope-shadow)!important;flex-direction:column!important;align-items:stretch!important;gap:0!important}
+ .site-header .nav-links.open,.site-header .nav-links.is-open,.site-header .nav-links.active{display:flex!important}
+ .site-header .nav-links a{padding:12px 14px!important;border-radius:10px!important}
+ .site-header .nav-actions{margin-left:auto!important}
+ .page-hero{min-height:0!important;padding:44px 0 54px!important}
+ .page-hero>.container,.section>.container,.section-block>.container{width:calc(100% - 32px)!important}
+ .site-footer .container.footer-bottom{width:calc(100% - 32px)!important;align-items:flex-start!important;flex-direction:column!important}
+ .two-col,.detail-grid{grid-template-columns:1fr!important}
+}
