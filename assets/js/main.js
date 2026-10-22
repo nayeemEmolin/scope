@@ -103,8 +103,10 @@
    const search=$('[data-course-search]'),filter=$('[data-course-filter]');
    const render=()=>{
     const q=(search?.value||'').toLowerCase().trim(),cat=filter?.value||'all';
+    const prefix=window.location.pathname.includes('/courses/')?'':'courses/';
+    const hrefFor=c=>c.id==='meal'?'../current-course/meal.html':`${prefix}${c.id}.html`;
     const list=window.SCOPE_COURSES.filter(c=>(cat==='all'||c.category===cat)&&(`${c.title} ${c.category} ${c.summary}`).toLowerCase().includes(q));
-    grid.innerHTML=list.map(c=>`<article class="course-card reveal visible" data-course="${c.id}"><div class="course-icon" aria-hidden="true">${c.icon}</div><div class="meta"><span class="pill">${c.category}</span><span class="pill ${c.status==='soon'?'soon':''}">${c.status==='open'?'Enrollment information':'Coming Soon'}</span></div><h3>${c.title}</h3><p>${c.summary}</p><div class="meta"><span class="pill">${c.duration}</span><span class="pill">${c.fee}</span></div><div class="card-bottom"><a class="text-link" href="${window.location.pathname.includes('/courses/') ? '' : 'courses/'}${c.id}.html">${c.status==='open'?'View course ↗':'Explore planned course ↗'}</a>${c.status==='open'?'<span aria-label="Enrollment information available">●</span>':''}</div></article>`).join('');
+    grid.innerHTML=list.map(c=>`<article class="course-card reveal visible" data-course="${c.id}"><div class="course-icon" aria-hidden="true">${c.icon}</div><div class="meta"><span class="pill">${c.category}</span><span class="pill ${c.status==='soon'?'soon':''}">${c.status==='open'?'Enrollment information':'Coming Soon'}</span></div><h3>${c.title}</h3><p>${c.summary}</p><div class="meta"><span class="pill">${c.duration}</span><span class="pill">${c.fee}</span></div><div class="card-bottom"><a class="text-link" href="${hrefFor(c)}">${c.status==='open'?'View course ↗':'Explore planned course ↗'}</a>${c.status==='open'?'<span aria-label="Enrollment information available">●</span>':''}</div></article>`).join('');
     const empty=$('[data-empty-state]');if(empty)empty.classList.toggle('hide',list.length>0);if(body.classList.contains('bn'))setLang('bn');
    };
    search?.addEventListener('input',render);filter?.addEventListener('change',render);render();
