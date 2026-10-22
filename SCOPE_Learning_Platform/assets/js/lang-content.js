@@ -1,1 +1,0 @@
-/* Main content is authored in English. The language toggle is ready for bilingual navigation labels; translate page copy where needed before production. */
